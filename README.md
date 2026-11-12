@@ -1,70 +1,59 @@
-# Ex. 9 React Fragments — Step by Step
+# React Lab Exercise 9: React Fragments
+## Name: LOGESH S
+## Roll no: 2305001014
+## Department: CSE
 
-## Exercise Number
-Exercise 9
+## AIM
+### To understand and implement React Fragments to group multiple JSX elements without creating unnecessary DOM elements.
 
-## Subject
-AI1067 - Modern Web Application Development (React JS Lab)
+## PROGRAM
 
-## Student Details
-- **Name:** LOGESH S
-- **Roll No:** 2305001014
-- **Department:** B.Tech CSE
-- **College:** IST, NMV University
+### i) App.jsx
+```jsx
+import { Fragment } from "react";
+import "./App.css";
 
-## Objective
-React JS Lab Exercise
+function Student() {
+  return (
+    <>
+      <h2>Student Details</h2>
+      <p>Name: Ajith</p>
+      <p>Department: CSE</p>
+      <p>Year: III Year</p>
+    </>
+  );
+}
 
-## Description
-Ex. 9 React Fragments — Step by Step 
-1. What is a React Fragment? 
-A React Fragment allows us to group multiple elements without adding an extra HTML 
-element such as <div> to the DOM. 
-The syntax is: 
-<> 
-  <h1>Hello</h1> 
-  <p>Welcome to React</p> 
-</> 
-The <>...</> is called a Fragment shorthand. 
- 
-2. Why Do We Need Fragments? 
-A React component normally needs to return a single parent element. 
-This will cause an error: 
-function App() { 
-  return ( 
-    <h1>Hello</h1> 
-    <p>Welcome</p> 
-  ); 
-} 
-There are two separate elements at the top level. 
- 
-3. Solution Using <div> 
-We can put them inside a <div>: 
-function App() { 
-  return ( 
-    <div> 
-      <h1>Hello</h1> 
-      <p>Welcome</p> 
-    </div> 
-  ); 
-} 
-This works, but the <div> creates an extra DOM element. 
- 
-4. Solution Us
+function App() {
+  const students = [
+    { id: 1, name: "Ajith" },
+    { id: 2, name: "Ravi" },
+    { id: 3, name: "Divya" },
+  ];
 
-## Technologies Used
-- React JS
-- Vite
-- JavaScript (JSX)
-- HTML5 / CSS3
+  return (
+    <div className="container">
+      <h1>College Information</h1>
+      <Student />
+      <hr />
+      <h2>Student List</h2>
+      {students.map((student) => (
+        <Fragment key={student.id}>
+          <h3>{student.name}</h3>
+          <p>Department: Computer Science</p>
+          <hr />
+        </Fragment>
+      ))}
+    </div>
+  );
+}
 
-## How to Run
-```bash
-npm create vite@latest my-app -- --template react
-cd my-app
-npm install
-npm run dev
+export default App;
 ```
 
-## Exercise Content
-See `exercise.txt` for complete exercise content and source code.
+## OUTPUT
+<img width="1125" height="473" alt="image" src="https://github.com/user-attachments/assets/f8468b80-64bb-40da-98a7-0f3ed460b73a" />
+<img width="1125" height="509" alt="image" src="https://github.com/user-attachments/assets/cd02aaae-b9b7-48af-ad30-d12a290b3d59" />
+
+## RESULT
+### Thus, React Fragments were successfully implemented using both shorthand syntax (<> </>) and explicit Fragment syntax. Multiple JSX elements were grouped without adding extra wrapper elements to the DOM.
